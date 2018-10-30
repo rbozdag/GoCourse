@@ -34,7 +34,7 @@ func main() {
 
 	//pointer
 	userPointer := &user
-	(*userPointer).age *= 2
+	userPointer.age *= 2
 	fmt.Println(user, " --> original variable")
 	fmt.Println(*userPointer, " -> pointer")
 
