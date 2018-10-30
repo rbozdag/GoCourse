@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 type User struct {
@@ -9,6 +10,14 @@ type User struct {
 	lastName  string
 	city      string
 	age       int
+}
+
+func (u User) greet() string {
+	return "Hello I am " + u.firstName + " " + u.lastName + " and I am " + strconv.Itoa(u.age) + " years old."
+}
+
+func (u *User) updateAge(age int) {
+	u.age = age
 }
 
 func main() {
@@ -34,8 +43,15 @@ func main() {
 
 	//pointer
 	userPointer := &user
-	userPointer.age *= 2
+	userPointer.age++
 	fmt.Println(user, " --> original variable")
 	fmt.Println(*userPointer, " -> pointer")
 
+	fmt.Println("----------------------------------------")
+
+	// extensions
+	fmt.Println(user.greet(), " --> greet")
+
+	user.updateAge(35)
+	fmt.Println(user.greet(), " --> updateAge after greet")
 }
